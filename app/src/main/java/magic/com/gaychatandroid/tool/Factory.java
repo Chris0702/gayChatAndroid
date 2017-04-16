@@ -5,6 +5,7 @@ import android.app.Application;
 import android.webkit.WebView;
 
 
+import magic.com.gaychatandroid.fragment.LoginFragment;
 import magic.com.gaychatandroid.role.SystemInfo;
 
 
@@ -13,10 +14,10 @@ import magic.com.gaychatandroid.role.SystemInfo;
  */
 public class Factory {
 
-//    public LoginFragment createLoginFragment()
-//    {
-//        return new LoginFragment();
-//    }
+    public LoginFragment createLoginFragment()
+    {
+        return new LoginFragment();
+    }
 //
 //    public ChatTextFragment createChatTextFragment()
 //    {

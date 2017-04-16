@@ -12,6 +12,7 @@ import android.widget.Toast;
 import magic.com.gaychatandroid.define.Constants;
 import magic.com.gaychatandroid.fragment.ControlFragment;
 import magic.com.gaychatandroid.role.SystemInfo;
+import magic.com.gaychatandroid.tool.Factory;
 
 import org.json.JSONException;
 import org.json.JSONObject;

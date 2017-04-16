@@ -15,7 +15,7 @@ public class ControlFragment extends Fragment {
     Model controlModel;
 
     public void setControlModel(Model model) {
-        controlModel.toastString("ControlFragment  setControlModel(Model model) ",getActivity());
+        controlModel = model;
     }
 
     public Model getControlModel() {
