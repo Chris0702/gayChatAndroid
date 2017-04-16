@@ -6,6 +6,8 @@ import android.webkit.WebView;
 
 
 import magic.com.gaychatandroid.fragment.ChatTextFragment;
+import magic.com.gaychatandroid.fragment.ConfigFragment;
+import magic.com.gaychatandroid.fragment.ControlFragment;
 import magic.com.gaychatandroid.fragment.LoginFragment;
 import magic.com.gaychatandroid.role.SystemInfo;
 
@@ -15,55 +17,28 @@ import magic.com.gaychatandroid.role.SystemInfo;
  */
 public class Factory {
 
-    public LoginFragment createLoginFragment()
-    {
+    public LoginFragment createLoginFragment() {
         return new LoginFragment();
     }
-//
-    public ChatTextFragment createChatTextFragment()
-    {
+
+    public ChatTextFragment createChatTextFragment() {
         return new ChatTextFragment();
     }
-//
-//    public SearchFriendFragment createSearchFriendFragment()
-//    {
-//        return new SearchFriendFragment();
-//    }
-//    public User createUser() {
-//        return new User();
-//    }
-//
-//    public User createUser(String username,String password,String projectName,String serverToken,String serverIP) {
-//        return new User(username,password,projectName,serverToken,serverIP);
-//    }
-//
-//    public Server createServer() {
-//        return new Server();
-//    }
-//
-//    public Server createServer(String ip, String firebaseTokenEnable) {
-//        return new Server(ip, firebaseTokenEnable);
-//    }
-//
-//
-//    public Project createProject() {
-//        return new Project();
-//    }
-//
-//    public Project createProject(String ip, String projectName) {
-//        return new Project(ip, projectName);
-//    }
-//
+
+    public ConfigFragment createConfigFragment() {
+        return new ConfigFragment();
+    }
+
     public SystemInfo createSystemInfo() {
         return new SystemInfo();
     }
 
-    public SystemInfo createSystemInfo(String firebaseToken ) {
+    public SystemInfo createSystemInfo(String firebaseToken) {
         return new SystemInfo(firebaseToken);
     }
 
-    public SystemInfo createSystemInfo(int id,String firebaseToken) {
-        return new SystemInfo(id,firebaseToken);
+    public SystemInfo createSystemInfo(int id, String firebaseToken) {
+        return new SystemInfo(id, firebaseToken);
     }
 
     public DBConnection createDBConnection(Activity activity) {
