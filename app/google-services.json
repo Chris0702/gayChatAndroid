@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "756544761181",
+    "firebase_url": "https://gaychatandroid.firebaseio.com",
+    "project_id": "gaychatandroid",
+    "storage_bucket": "gaychatandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:756544761181:android:cef10ac81df294b9",
+        "android_client_info": {
+          "package_name": "magic.com.gaychatandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "756544761181-1lf5kunti7i2959v7uu0u2p2bm53bogr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "magic.com.gaychatandroid",
+            "certificate_hash": "d9ac0669cacc0ca152e3ada646a1f53134efef96"
+          }
+        },
+        {
+          "client_id": "756544761181-toai8asbgjg5bclnn0s0d4uqh3cpfsuu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwzGP_ZSCmwAhfE_P0_d6CC2h4-Nl_-HQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "756544761181-toai8asbgjg5bclnn0s0d4uqh3cpfsuu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
