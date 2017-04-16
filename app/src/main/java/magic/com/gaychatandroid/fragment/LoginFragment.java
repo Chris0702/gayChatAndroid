@@ -63,6 +63,8 @@ public class LoginFragment  extends ControlFragment {
             @Override
             public void onClick(View arg0) {
                 controlModel.toastString("startChatButton", controlActivity);
+                ChatTextFragment chatTextFragment = factory.createChatTextFragment();
+                controlModel.changeFragment(getFragmentManager(), R.id.content_main, chatTextFragment);
             }
         });
 
