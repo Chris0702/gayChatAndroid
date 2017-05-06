@@ -7,6 +7,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.graphics.Bitmap;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import magic.com.gaychatandroid.define.Constants;
@@ -93,6 +94,16 @@ public class Model implements Serializable {
             systemInfo = factory.createSystemInfo();
             dbHelper.insertSystemInfo(systemInfo);
         }
+    }
+
+    public void setLocateByRelativeLayout(View controlView, float x, float y, int width, int height)
+    {
+        Log.d("setLocate","setLocateByRelativeLayout   x: "+x+" ,y"+y+" ,width"+width+" ,height"+height);
+       // toastString("setLocateByRelativeLayout   x: "+x+" ,y"+y+" ,width"+width+" ,height"+height,controlActivity);
+        controlView.setX(x);
+        controlView.setY(y);
+        controlView.getLayoutParams().width=width;
+        controlView.getLayoutParams().height=height;
     }
 
     public SystemInfo getSystemInfo() {

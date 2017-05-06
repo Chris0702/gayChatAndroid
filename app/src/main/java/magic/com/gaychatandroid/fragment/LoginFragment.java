@@ -1,6 +1,7 @@
 package magic.com.gaychatandroid.fragment;
 
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import magic.com.gaychatandroid.R;
 import magic.com.gaychatandroid.define.Constants;
@@ -29,6 +31,7 @@ public class LoginFragment extends ControlFragment {
                              Bundle savedInstanceState) {
         View returnView = inflater.inflate(R.layout.login_fragment, container, false);
         createObj(returnView);
+        UILayoutInit();
         setListener();
         return returnView;
     }
@@ -56,6 +59,18 @@ public class LoginFragment extends ControlFragment {
         startChatButton = (Button) view.findViewById(R.id.start_chat_button);
         configButton = (Button) view.findViewById(R.id.config_button);
         httpClient = factory.createHttpClient();
+    }
+
+    private void UILayoutInit()
+    {
+        DisplayMetrics metrics = new DisplayMetrics();
+        controlActivity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+//        configButton.setText("手機銀幕大小為 "+metrics.widthPixels+" X "+metrics.heightPixels);
+        controlModel.toastString("手機銀幕大小為 "+metrics.widthPixels+" X "+metrics.heightPixels+"  startChatButtonX "+startChatButton.getX()+" startChatButtonY  "+startChatButton.getY(),controlActivity);
+        double screenWidth=metrics.widthPixels;
+        double screenHeight=metrics.heightPixels;
+        controlModel.setLocateByRelativeLayout(startChatButton, (float)(screenWidth*0.32), (float)(screenHeight*0.5), (int)(screenWidth*0.37), (int)(screenHeight*0.17));
+        controlModel.setLocateByRelativeLayout(configButton, (float)(screenWidth*0.22), (float)(screenHeight*0.8), (int)(screenWidth*0.53), (int)(screenHeight*0.07));
     }
 
     private void setListener() {
