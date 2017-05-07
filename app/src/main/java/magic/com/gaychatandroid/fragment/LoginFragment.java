@@ -66,7 +66,7 @@ public class LoginFragment extends ControlFragment {
         DisplayMetrics metrics = new DisplayMetrics();
         controlActivity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
 //        configButton.setText("手機銀幕大小為 "+metrics.widthPixels+" X "+metrics.heightPixels);
-        controlModel.toastString("手機銀幕大小為 "+metrics.widthPixels+" X "+metrics.heightPixels+"  startChatButtonX "+startChatButton.getX()+" startChatButtonY  "+startChatButton.getY(),controlActivity);
+        controlModel.toastString("手機銀幕大小為 "+metrics.widthPixels+" X "+metrics.heightPixels,controlActivity);
         double screenWidth=metrics.widthPixels;
         double screenHeight=metrics.heightPixels;
         controlModel.setLocateByRelativeLayout(startChatButton, (float)(screenWidth*0.32), (float)(screenHeight*0.5), (int)(screenWidth*0.37), (int)(screenHeight*0.17));

@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +27,6 @@ import io.socket.emitter.Emitter;
 import magic.com.gaychatandroid.R;
 import magic.com.gaychatandroid.define.Constants;
 import magic.com.gaychatandroid.tool.Factory;
-import magic.com.gaychatandroid.tool.Model;
 import magic.com.gaychatandroid.tool.SocketIO;
 
 /**
@@ -39,20 +39,21 @@ public class ChatTextFragment extends ControlFragment {
     private LoginFragment loginFragment;
     private Button sendMessageButton;
     private Button sendImageButton;
-    private Button logoutButton;
+    private Button backButton;
+    private Button cameraButton;
     private EditText input;
     private LinearLayout chatContent;
     private ScrollView chatContentScroll;
     private Socket socket;
     private SocketIO socketIO;
-    private TextView systemMessage;
+//    private TextView systemMessage;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View returnView = inflater.inflate(R.layout.chat_text_fragment, container, false);
         init(returnView);
-        socketRun();
+//        socketRun();
         buttonClick();
         return returnView;
     }
@@ -80,6 +81,26 @@ public class ChatTextFragment extends ControlFragment {
         super.onDestroyView();
 //        Toast.makeText(getActivity(), "onDestroyView()", Toast.LENGTH_SHORT).show();
         socket.disconnect();
+    }
+
+    private void UILayoutInit()
+    {
+        DisplayMetrics metrics = new DisplayMetrics();
+        controlActivity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+//        configButton.setText("手機銀幕大小為 "+metrics.widthPixels+" X "+metrics.heightPixels);
+        controlModel.toastString("手機銀幕大小為 "+metrics.widthPixels+" X "+metrics.heightPixels,controlActivity);
+        double screenWidth=metrics.widthPixels;
+        double screenHeight=metrics.heightPixels;
+        controlModel.setLocateByRelativeLayout(backButton, (float)(screenWidth*0.08), (float)(screenHeight*0.03), (int)(screenWidth*0.04), (int)(screenHeight*0.02));
+
+        controlModel.setLocateByRelativeLayout(cameraButton, (float)(screenWidth*0.03), (float)(screenHeight*0.93), (int)(screenWidth*0.04), (int)(screenHeight*0.02));
+        controlModel.setLocateByRelativeLayout(sendImageButton, (float)(screenWidth*0.1), (float)(screenHeight*0.93), (int)(screenWidth*0.04), (int)(screenHeight*0.02));
+//        controlModel.setLocateByRelativeLayout(input, 100, 100, 500, 200);
+        controlModel.setLocateByRelativeLayout(input, (float)(screenWidth*0.17), (float)(screenHeight*0.9), (int)(screenWidth*0.83), 150);
+//        input.setX((float)(screenWidth*0.17));
+//        input.setY((float)(screenHeight*0.93));
+//        controlModel.setLocateByRelativeLayout(startChatButton, (float)(screenWidth*0.32), (float)(screenHeight*0.5), (int)(screenWidth*0.37), (int)(screenHeight*0.17));
+//        controlModel.setLocateByRelativeLayout(configButton, (float)(screenWidth*0.22), (float)(screenHeight*0.8), (int)(screenWidth*0.53), (int)(screenHeight*0.07));
     }
 
     private void buttonClick() {
@@ -128,7 +149,7 @@ public class ChatTextFragment extends ControlFragment {
         });
 
 
-        logoutButton.setOnClickListener(new Button.OnClickListener() {
+        backButton.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 controlModel.setLogoutToDB();
@@ -140,6 +161,7 @@ public class ChatTextFragment extends ControlFragment {
 
     private void init(View view) {
         objectInit(view);
+        UILayoutInit();
     }
 
     private void socketRun() {
@@ -155,15 +177,17 @@ public class ChatTextFragment extends ControlFragment {
     private void objectInit(View view) {
         factory = new Factory();
         loginFragment = factory.createLoginFragment();
-        logoutButton = (Button) view.findViewById(R.id.logout_button);
-        sendMessageButton = (Button) view.findViewById(R.id.sendMessageButton);
-        sendImageButton = (Button) view.findViewById(R.id.sendImageButton);
-        input = (EditText) view.findViewById(R.id.inputChatMessage);
-        chatContent = (LinearLayout) view.findViewById(R.id.chatMessageContentLayout);
-        chatContentScroll = (ScrollView) view.findViewById(R.id.chatMessageScrollLayout);
+        backButton = (Button) view.findViewById(R.id.back_button);
+        sendMessageButton = (Button) view.findViewById(R.id.send_message_button);
+        sendImageButton = (Button) view.findViewById(R.id.send_image_button);
+        cameraButton = (Button) view.findViewById(R.id.camera_button);
+        input = (EditText) view.findViewById(R.id.input_chat_message);
+        chatContent = (LinearLayout) view.findViewById(R.id.chat_message_content_layout);
+        chatContentScroll = (ScrollView) view.findViewById(R.id.chat_message_scrollLayout);
         socketIO = factory.createSocketIO(Constants.CHAT_NAMESPACE_SOCKET);
         socket = socketIO.getSocket();
-        systemMessage = (TextView) view.findViewById(R.id.systemMessage);
+//        systemMessage = (TextView) view.findViewById(R.id.systemMessage);
+        controlActivity = getActivity();
     }
 
     private Emitter.Listener onChatImage = new Emitter.Listener() {
@@ -242,7 +266,7 @@ public class ChatTextFragment extends ControlFragment {
                 public void run() {
                     String receiveSystemText = " " + args[0];
 //                    Toast.makeText(getActivity(),receiveSystemText, Toast.LENGTH_SHORT).show();
-                    systemMessage.setText(receiveSystemText);
+//                    systemMessage.setText(receiveSystemText);
                 }
             });
         }
